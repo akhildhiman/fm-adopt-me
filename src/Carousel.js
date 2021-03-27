@@ -7,8 +7,6 @@ class Carousel extends React.Component {
   };
 
   static getDerivedStateFromProps({ media }) {
-    console.log(media);
-
     let photos = ["http://placecorgi.com/600/600"];
 
     if (media.length) {
@@ -31,14 +29,16 @@ class Carousel extends React.Component {
         <img src={photos[active]} alt="animal" />
         <div className="carousel-smaller">
           {photos.map((photo, index) => {
-            <img
-              key={photo}
-              onClick={this.handleIndexClick}
-              data-index={index}
-              src={photo}
-              className={index === active ? "active" : ""}
-              alt="animal thumbnail"
-            />;
+            return (
+              <img
+                key={photo}
+                onClick={this.handleIndexClick}
+                data-index={index}
+                src={photo}
+                className={index === active ? "active" : ""}
+                alt="animal thumbnail"
+              />
+            );
           })}
         </div>
       </div>
